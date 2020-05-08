@@ -19,7 +19,7 @@ print ("LED On")
 
 GPIO.output(18, GPIO.HIGH)
 
-time.sleep(1)
+time.sleep(5)
 
 print ("LED off")
 
