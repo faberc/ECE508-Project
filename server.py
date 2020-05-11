@@ -25,7 +25,7 @@ while True:
 	# process your message
 	if data == 'Hello':
 		reply = 'Hi, back!'
-		elif data == 'This is important':
+	elif data == 'This is important':
 		reply = 'OK, I have done the important thing you have asked me!'
 
 	#and so on and on until...
