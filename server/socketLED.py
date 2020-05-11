@@ -41,6 +41,7 @@ while True:
         time.sleep(5)
         print ("LED off")
         GPIO.output(18, GPIO.LOW)
+        reply = "LED done"
 
 	#and so on and on until...
 	elif data == 'quit':
