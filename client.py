@@ -11,6 +11,6 @@ while True:
     # command = 'Sent Command'
     s.sendall(command.encode('utf-8'))
     reply = s.recv(1024)
-    if reply == 'Terminate':
+    if reply == 'Terminating':
     	break
     print(reply)

@@ -2,7 +2,7 @@ import socket
 
 HOST = '0.0.0.0' # Server IP or Hostname
 PORT = 12345 # Pick an open Port (1000+ recommended), must match the client sport
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM, socket.SO_REUSEADDR, socket.SOL_SOCKET)
 print 'Socket created'
 
 #managing error exception
