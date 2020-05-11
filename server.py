@@ -8,7 +8,7 @@ print 'Socket created'
 #managing error exception
 try:
 	s.bind((HOST, PORT))
-	except socket.error:
+except socket.error:
 	print 'Bind failed '
 
 	s.listen(5)
