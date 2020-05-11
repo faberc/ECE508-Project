@@ -35,12 +35,12 @@ while True:
 		reply = 'Hi, back!'
 	elif data == 'This is important':
 		reply = 'OK, I have done the important thing you have asked me!'
-    elif data == 'Light':
-        print ("LED On")
-        GPIO.output(18, GPIO.HIGH)
-        time.sleep(5)
-        print ("LED off")
-        GPIO.output(18, GPIO.LOW)
+    	elif data == 'Light':
+        	print ("LED On")
+        	GPIO.output(18, GPIO.HIGH)
+        	time.sleep(5)
+        	print ("LED off")
+        	GPIO.output(18, GPIO.LOW)
 
 	#and so on and on until...
 	elif data == 'quit':
