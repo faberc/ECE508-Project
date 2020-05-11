@@ -10,6 +10,6 @@ while True:
 	command = raw_input('Enter your command: ')
 	s.send(command)
 	reply = s.recv(1024)
-		if reply == 'Terminate':
-			break
-		print reply
+	if reply == 'Terminate':
+		break
+	print(reply)
