@@ -37,4 +37,4 @@ while True:
 
 	# Sending reply
 	conn.send(reply)
-	conn.close() # Close connections
+conn.close() # Close connections
