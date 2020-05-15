@@ -31,19 +31,12 @@ while True:
 	reply = ''
 
 	# process your message
-	if data == 'Hello':
-		reply = 'Hi, back!'
-	elif data == 'This is important':
-		reply = 'OK, I have done the important thing you have asked me!'
-	elif data == 'Light':
-		print ("LED On")
+	if data == 'on':
 		GPIO.output(18, GPIO.HIGH)
-		time.sleep(5)
-		print ("LED off")
+		reply = "LED On"
+	elif data == 'off'
 		GPIO.output(18, GPIO.LOW)
-		reply = "LED done"
-
-	#and so on and on until...
+		reply = "LED Off"
 	elif data == 'quit':
 		conn.send('Terminating')
 		break
