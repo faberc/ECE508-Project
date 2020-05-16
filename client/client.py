@@ -75,16 +75,23 @@ class onAirGUI:
 
     def checkZoom(self):
         while True:
-            for pid in psutil.pids():
+            """for pid in psutil.pids():
                 try:
                     p = psutil.Process(pid)
                 except:
-                    print("failed to get pid")
+                    continue
                 if p.name() == "Zoom.exe":
                     self.zoomOn = True
+                    print("FoundZoom")
                 else:
-                    self.zoomOn = False
-            time.sleep(10)
+                    self.zoomOn = False"""
+
+            self.zoomMicButton = pyautogui.locateOnScreen('c:/Users/Chuck/Insync/kpfaber@gmail.com/Google Drive/Portland State University/Spring 2020/ECE 508 - Python Workshop/ECE508-Project/client/unmute3.png', confidence=0.9)
+            if self.zoomMicButton is not None:
+                self.zoomOn = True
+            else:
+                self.zoomOn = False
+            time.sleep(1)
 
     def socketListen(self):
         while True:
@@ -98,7 +105,7 @@ class onAirGUI:
                 if reply == 'led on':
                     self.ledOn = True
                 elif reply == 'led off':
-                    self.ledOff = False
+                    self.ledOn = False
                 elif reply == 'terminating':
                     break
 

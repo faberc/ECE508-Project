@@ -19,30 +19,31 @@ try:
 except socket.error:
 	print('Bind failed')
 
-s.listen(5)
-print('Socket awaiting messages')
-(conn, addr) = s.accept()
-print('Connected')
-
-# awaiting for message
 while True:
-	data = conn.recv(1024)
-	print('I sent a message back in response to: ' + data)
-	reply = ''
+	s.listen(5)
+	print('Socket awaiting messages')
+	(conn, addr) = s.accept()
+	print('Connected')
 
-	# process your message
-	if data == 'on':
-		GPIO.output(18, GPIO.HIGH)
-		reply = 'led on'
-	elif data == 'off':
-		GPIO.output(18, GPIO.LOW)
-		reply = 'led off'
-	elif data == 'quit':
-		conn.send('terminating')
-		break
-	else:
-		reply = 'unknown command'
+	# awaiting for message
+	while True:
+		data = conn.recv(1024)
+		print('I sent a message back in response to: ' + data)
+		reply = ''
 
-	# Sending reply
-	conn.send(reply)
-conn.close() # Close connections
+		# process your message
+		if data == 'on':
+			GPIO.output(18, GPIO.HIGH)
+			reply = 'led on'
+		elif data == 'off':
+			GPIO.output(18, GPIO.LOW)
+			reply = 'led off'
+		elif data == 'quit':
+			conn.send('terminating')
+			break
+		else:
+			reply = 'unknown command'
+
+		# Sending reply
+		conn.send(reply)
+	conn.close() # Close connections

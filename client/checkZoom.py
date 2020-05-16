@@ -1,12 +1,15 @@
-import psutil
+import psutil, threading
 
 def verifyZoom():
     zoomOn = False
     for pid in psutil.pids():
         p = psutil.Process(pid)
+        print(p.name())
         if p.name() == "Zoom.exe":
             zoomOn = True
-            break
     print(zoomOn)
 
-verifyZoom()
+
+t1 = threading.Thread(target=verifyZoom)
+
+t1.start()
