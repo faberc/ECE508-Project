@@ -12,6 +12,7 @@ class onAirGUI:
         self.ledOn = False
         self.onAir = False
         self.zoomMicButton = None
+        self.closing = False
         
         """Create tkinter object"""
         self.root = tk.Tk()
@@ -64,33 +65,24 @@ class onAirGUI:
         self.root.protocol("WM_DELETE_WINDOW", self.close)
         self.root.mainloop()
 
-    def killall(self):
-        self.q.put("quit")
-        self.close()
-
     def close(self):
+        self.q.put("quit")
+        print("quitting")
+        self.root.destroy()
         self.sockThread.join()
         self.zoomThread.join()
-        self.root.destroy()
+        quit()
 
     def checkZoom(self):
         while True:
-            """for pid in psutil.pids():
-                try:
-                    p = psutil.Process(pid)
-                except:
-                    continue
-                if p.name() == "Zoom.exe":
-                    self.zoomOn = True
-                    print("FoundZoom")
-                else:
-                    self.zoomOn = False"""
-
-            self.zoomMicButton = pyautogui.locateOnScreen('c:/Users/Chuck/Insync/kpfaber@gmail.com/Google Drive/Portland State University/Spring 2020/ECE 508 - Python Workshop/ECE508-Project/client/unmute3.png', confidence=0.9)
-            if self.zoomMicButton is not None:
+            unmute = pyautogui.locateOnScreen('c:/Users/Chuck/Insync/kpfaber@gmail.com/Google Drive/Portland State University/Spring 2020/ECE 508 - Python Workshop/ECE508-Project/client/unmute3.png', confidence=0.9)
+            mute = pyautogui.locateOnScreen('c:/Users/Chuck/Insync/kpfaber@gmail.com/Google Drive/Portland State University/Spring 2020/ECE 508 - Python Workshop/ECE508-Project/client/mute2.png', confidence=0.9)
+            if (mute or unmute) is not None:
                 self.zoomOn = True
             else:
                 self.zoomOn = False
+            if self.closing is True:
+                break
             time.sleep(1)
 
     def socketListen(self):
@@ -107,14 +99,15 @@ class onAirGUI:
                 elif reply == 'led off':
                     self.ledOn = False
                 elif reply == 'terminating':
+                    self.closing = True
                     break
 
     def updateLabels(self):
         if self.zoomOn is True:
-            self.zoomStatus.set("Zoom On")
+            self.zoomStatus.set("Button Visible")
             self.zoomLabel.config(fg='green')
         else:
-            self.zoomStatus.set("Zoom Off")
+            self.zoomStatus.set("Button Not Visisble")
             self.zoomLabel.config(fg='red')
 
 
