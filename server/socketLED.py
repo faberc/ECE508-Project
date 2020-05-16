@@ -33,15 +33,15 @@ while True:
 	# process your message
 	if data == 'on':
 		GPIO.output(18, GPIO.HIGH)
-		reply = "LED On"
+		reply = "led on"
 	elif data == 'off':
 		GPIO.output(18, GPIO.LOW)
-		reply = "LED Off"
+		reply = "led off"
 	elif data == 'quit':
-		conn.send('Terminating')
+		conn.send('terminating')
 		break
 	else:
-		reply = 'Unknown command'
+		reply = 'unknown command'
 
 	# Sending reply
 	conn.send(reply)

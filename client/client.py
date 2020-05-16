@@ -95,7 +95,11 @@ class onAirGUI:
                 reply = self.s.recv(1024)
                 reply = reply.decode('utf-8')
                 print(reply)
-                if reply == 'Terminating':
+                if reply == 'led on':
+                    self.ledOn = True
+                elif reply == 'led off':
+                    self.ledOff = False
+                elif reply == 'Terminating':
                     break
 
     def updateLabels(self):
