@@ -11,6 +11,13 @@ GPIO.setup(24, GPIO.OUT)
 GPIO.setup(25, GPIO.OUT)
 GPIO.setup(12, GPIO.OUT)
 
+# Initialize all LEDs to off
+GPIO.output(18, GPIO.LOW)
+GPIO.output(23, GPIO.LOW)
+GPIO.output(24, GPIO.LOW)
+GPIO.output(25, GPIO.LOW)
+GPIO.output(12, GPIO.LOW)
+
 HOST = '0.0.0.0' # Server IP or Hostname
 PORT = 12345 # Pick an open Port (1000+ recommended), must match the client sport
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
