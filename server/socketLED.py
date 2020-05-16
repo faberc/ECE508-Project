@@ -34,7 +34,7 @@ while True:
 	if data == 'on':
 		GPIO.output(18, GPIO.HIGH)
 		reply = "LED On"
-	elif data == 'off'
+	elif data == 'off':
 		GPIO.output(18, GPIO.LOW)
 		reply = "LED Off"
 	elif data == 'quit':
