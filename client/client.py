@@ -99,7 +99,7 @@ class onAirGUI:
                     self.ledOn = True
                 elif reply == 'led off':
                     self.ledOff = False
-                elif reply == 'Terminating':
+                elif reply == 'terminating':
                     break
 
     def updateLabels(self):
