@@ -5,6 +5,14 @@ class onAirGUI:
     """ GUI and methods for Zoom On Air Sign"""
 
     def __init__(self):
+        """Declare Path to mute and umute images"""
+        self.mute_png = "c:/Users/Chuck/Insync/kpfaber@gmail.com/Google Drive/Portland State University/Spring 2020/ECE 508 - Python Workshop/ECE508-Project/client/mute2.png"
+        self.unmute_png = "c:/Users/Chuck/Insync/kpfaber@gmail.com/Google Drive/Portland State University/Spring 2020/ECE 508 - Python Workshop/ECE508-Project/client/unmute3.png"
+
+        """Host and Port Definitions"""
+        self.__HOST = '10.0.1.87'
+        self.__PORT = 12345
+
         """Declare State Variables"""
         self.zoomOn = False
         self.rPiConnected = False
@@ -43,10 +51,6 @@ class onAirGUI:
 
         self.root.grid_columnconfigure(4, minsize=100)
 
-        """Host and Port Definitions"""
-        self.__HOST = '10.0.1.87'
-        self.__PORT = 12345
-
         """Initialize Queue"""
         self.q = Queue(maxsize=0)
 
@@ -75,8 +79,8 @@ class onAirGUI:
 
     def checkZoom(self):
         while True:
-            unmute = pyautogui.locateOnScreen('c:/Users/Chuck/Insync/kpfaber@gmail.com/Google Drive/Portland State University/Spring 2020/ECE 508 - Python Workshop/ECE508-Project/client/unmute3.png', confidence=0.9)
-            mute = pyautogui.locateOnScreen('c:/Users/Chuck/Insync/kpfaber@gmail.com/Google Drive/Portland State University/Spring 2020/ECE 508 - Python Workshop/ECE508-Project/client/mute2.png', confidence=0.9)
+            unmute = pyautogui.locateOnScreen(self.unmute_png, confidence=0.9)
+            mute = pyautogui.locateOnScreen(self.mute_png, confidence=0.9)
             if (mute or unmute) is not None:
                 self.zoomOn = True
             else:
@@ -145,7 +149,7 @@ class onAirGUI:
     
     def buttonPress(self):
         if not self.onAir:
-            self.zoomMicButton = pyautogui.locateOnScreen('c:/Users/Chuck/Insync/kpfaber@gmail.com/Google Drive/Portland State University/Spring 2020/ECE 508 - Python Workshop/ECE508-Project/client/unmute3.png', confidence=0.9)
+            self.zoomMicButton = pyautogui.locateOnScreen(self.unmute_png, confidence=0.9)
             if self.zoomMicButton is not None:
                 pyautogui.click(pyautogui.center(self.zoomMicButton))
                 self.q.put("on")
@@ -155,7 +159,7 @@ class onAirGUI:
                 print("Failed to find button.")
 
         else:
-            self.zoomMicButton = pyautogui.locateOnScreen('c:/Users/Chuck/Insync/kpfaber@gmail.com/Google Drive/Portland State University/Spring 2020/ECE 508 - Python Workshop/ECE508-Project/client/mute2.png', confidence=0.9)
+            self.zoomMicButton = pyautogui.locateOnScreen(self.mute_png, confidence=0.9)
             if self.zoomMicButton is not None:
                 pyautogui.click(pyautogui.center(self.zoomMicButton))
                 self.q.put("off")
