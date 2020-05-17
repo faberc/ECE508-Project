@@ -1,4 +1,4 @@
-import pyautogui, time, threading, socket, psutil, tkinter as tk
+import pyautogui, time, threading, socket, tkinter as tk
 from queue import Queue
 
 class onAirGUI:
