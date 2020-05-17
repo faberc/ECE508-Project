@@ -4,13 +4,13 @@ Python project involving using a Raspberry Pi to light an indicator if my Zoom m
 This script opens a socket to a Raspberry Pi. It also instantiates a GUI that looks for the Zoom meeting window. If the meeting window and the mute/unmute button is visible, it will be indicated on the GUI allowing the user to click the "Off Air" button which will search for the unmute button on the Zoom meeting window and click it.
 
 ## Dependencies:
-pyautogui
-openocd
-time
-threading
-socket
-tkinter
-queue
+* pyautogui
+* openocd
+* time
+* threading
+* socket
+* tkinter
+* queue
 
 ## Setup and Running Script
 1. In the client.py script, change the file path to the mute and unmute images as needed.
